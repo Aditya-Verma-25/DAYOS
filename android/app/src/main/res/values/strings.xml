@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">DAYOS</string>
+    <string name="title_activity_main">DAYOS</string>
+    <string name="package_name">com.adityaverma.dayos</string>
+    <string name="custom_url_scheme">com.adityaverma.dayos</string>
+</resources>

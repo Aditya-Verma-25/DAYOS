@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+    --safe-area-left: env(safe-area-inset-left, 0px);
+    --safe-area-right: env(safe-area-inset-right, 0px);
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #050505;
+  }
+
+  /* Custom subtle dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 9999px;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* Time font styling */
+.font-mono-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Tactile Glass Card Surface */
+.glass-card-surface {
+  position: relative;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease,
+              background-color 0.2s ease,
+              opacity 0.2s ease;
+}
+
+/* Futuristic Obsidian Glass Panels */
+.obsidian-glass {
+  background: rgba(11, 13, 16, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.light .obsidian-glass {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.05), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Watch-Style Wheel Picker Container with 3D Center Magnification Mask */
+.watch-wheel-container {
+  position: relative;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+.watch-wheel-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.watch-wheel-item {
+  scroll-snap-align: center;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Top & Bottom gradient mask for watch wheel to fade non-centered items */
+.watch-wheel-mask {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+}
+
+/* Backdrop drawer styling */
+.bottom-sheet-backdrop {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Prefers-reduced-motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   NEON SELECTED CONTRAST ENFORCEMENT
+   Ensure all elements with neon background have solid black text and icons
+   rendered above background layers with 100% opacity.
+   ============================================================ */
+.neon-black-contrast,
+button.bg-\[\#DFFF00\],
+[style*="background-color: #DFFF00"],
+[style*="background-color: #dfff00"],
+[style*="background-color: rgb(223, 255, 0)"] {
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+button.bg-\[\#DFFF00\] svg,
+[style*="background-color: #DFFF00"] svg,
+[style*="background-color: #dfff00"] svg,
+[style*="background-color: rgb(223, 255, 0)"] svg {
+  color: #000000 !important;
+  stroke: #000000 !important;
+  opacity: 1 !important;
+}
